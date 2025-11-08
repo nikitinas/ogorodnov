@@ -59,19 +59,19 @@ export default function AudiencePage({ params }: AudiencePageProps) {
               <p className="text-base leading-7 text-brand-slate">
                 {audience.description}
               </p>
-                <div className="flex flex-col gap-4 sm:flex-row">
-                  <Link
-                    href={audience.primaryCta.href}
-                    className="btn btn-primary px-7 py-3"
-                  >
-                    {audience.primaryCta.label}
-                  </Link>
-                  <Link
-                    href="/interactive-lab"
-                    className="btn btn-outline px-7 py-3"
-                  >
-                    Попробовать интерактивы
-                  </Link>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Link
+                  href={audience.primaryCta.href}
+                  className="btn btn-primary px-7 py-3"
+                >
+                  {audience.primaryCta.label}
+                </Link>
+                <Link
+                  href="/interactive-lab"
+                  className="btn btn-outline px-7 py-3"
+                >
+                  Попробовать интерактивы
+                </Link>
               </div>
               {audience.primaryCta.description ? (
                 <p className="text-sm text-brand-ash">
@@ -86,20 +86,25 @@ export default function AudiencePage({ params }: AudiencePageProps) {
               <p className="mt-4 text-sm leading-7 text-brand-ash">
                 {audience.tone}
               </p>
-              <div className="mt-6 space-y-4 text-sm text-brand-slate">
-                {audience.insights.slice(0, 2).map((insight) => (
-                  <div
-                    key={insight.title}
-                    className="rounded-2xl bg-neutral-50 p-4"
-                  >
-                    <h3 className="font-semibold text-brand-navy">
-                      {insight.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-brand-ash">
-                      {insight.description}
-                    </p>
-                  </div>
-                ))}
+              <div className="mt-6 space-y-4">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-ash">
+                  Акценты первого знакомства
+                </h3>
+                <ul className="space-y-3 text-sm text-brand-slate">
+                  {audience.insights.slice(0, 2).map((insight) => (
+                    <li key={insight.title} className="flex gap-3">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-navy"></span>
+                      <div>
+                        <p className="font-semibold text-brand-navy">
+                          {insight.title}
+                        </p>
+                        <p className="mt-1 text-sm text-brand-ash">
+                          {insight.description}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -142,17 +147,16 @@ export default function AudiencePage({ params }: AudiencePageProps) {
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className="text-3xl text-brand-navy md:text-4xl">
-                Что вы получаете
+                Как методика работает именно для вас
               </h2>
               <p className="mt-3 max-w-2xl text-base leading-7 text-brand-ash">
-                Конкретные инструменты и программы, которые вы можете внедрить
-                сразу после консультации или диагностики.
+                Ключевые элементы методики — алгоритмы, художественное
+                тактирование и ладо-вокальные жесты — настраиваются под запросы{" "}
+                {audience.name.toLowerCase()}. Ниже — фокусы, на которые мы
+                делаем упор в совместной работе.
               </p>
             </div>
-              <Link
-                href="/interactive-lab"
-                className="btn btn-outline px-6 py-2"
-              >
+            <Link href="/interactive-lab" className="btn btn-outline px-6 py-2">
               Смотреть интерактивы
             </Link>
           </div>
@@ -205,7 +209,7 @@ export default function AudiencePage({ params }: AudiencePageProps) {
                 Реальные кейсы учеников и клиентов, которые проходили наш путь.
               </p>
             </div>
-              <Link href="/blog" className="btn btn-outline px-6 py-2">
+            <Link href="/blog" className="btn btn-outline px-6 py-2">
               Больше кейсов в блоге
             </Link>
           </div>
@@ -246,15 +250,15 @@ export default function AudiencePage({ params }: AudiencePageProps) {
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <Link
-                  href={audience.primaryCta.href}
-                  className="btn btn-primary px-8 py-3 shadow-lg"
-                >
+              <Link
+                href={audience.primaryCta.href}
+                className="btn btn-primary px-8 py-3 shadow-lg"
+              >
                 {audience.primaryCta.label}
               </Link>
               <Link
                 href="/interactive-lab"
-                  className="btn btn-on-dark px-8 py-3"
+                className="btn btn-on-dark px-8 py-3"
               >
                 Попробовать лабораторию
               </Link>
