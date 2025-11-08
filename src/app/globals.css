@@ -52,18 +52,53 @@ a {
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full text-center text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-coral;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    transition: all 200ms ease;
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid #ff6f61;
+    outline-offset: 3px;
   }
 
   .btn-primary {
-    @apply bg-brand-coral text-white shadow-soft hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg;
+    background-color: #ff6f61;
+    color: #ffffff;
+    box-shadow: 0 20px 40px -24px rgba(31, 60, 136, 0.28);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-0.125rem);
+    opacity: 0.9;
+    box-shadow: 0 26px 48px -26px rgba(31, 60, 136, 0.32);
   }
 
   .btn-outline {
-    @apply border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white;
+    border: 1px solid #1f3c88;
+    color: #1f3c88;
+    background-color: transparent;
+  }
+
+  .btn-outline:hover {
+    background-color: #1f3c88;
+    color: #ffffff;
   }
 
   .btn-on-dark {
-    @apply border border-white/60 text-white hover:bg-white hover:text-brand-navy;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+    background-color: transparent;
+  }
+
+  .btn-on-dark:hover {
+    background-color: #ffffff;
+    color: #1f3c88;
   }
 }
