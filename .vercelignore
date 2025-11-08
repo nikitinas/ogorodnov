@@ -39,7 +39,3 @@ next-env.d.ts
 *.swp
 *.swo
 *~
-
-# Documentation (not needed in deployment)
-docs
-
