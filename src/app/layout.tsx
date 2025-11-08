@@ -41,9 +41,11 @@ export default function RootLayout({
         className={`${manrope.variable} ${playfair.variable} bg-neutral-50 text-brand-slate antialiased`}
       >
         <div className="min-h-screen bg-hero-gradient">
-          <div className="mx-auto flex min-h-screen max-w-[1400px] flex-col bg-white/80 shadow-[0_40px_80px_-60px_rgba(31,60,136,0.45)]">
-            <SiteHeader />
-            <main className="flex-1 px-0">{children}</main>
+          <div className="mx-auto flex min-h-screen max-w-[1400px] flex-col">
+            <div className="flex flex-1 flex-col bg-white/80 shadow-[0_40px_80px_-60px_rgba(31,60,136,0.45)]">
+              <SiteHeader />
+              <main className="flex-1 px-0">{children}</main>
+            </div>
             <SiteFooter />
           </div>
         </div>
