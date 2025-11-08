@@ -16,16 +16,16 @@ export default function Home() {
               <div className="inline-flex items-center gap-3 rounded-full bg-brand-sand px-4 py-2 text-xs uppercase tracking-[0.32em] text-brand-ash">
                 <span>Голос · Движение · Дыхание</span>
               </div>
-            <h1 className="text-4xl leading-tight text-brand-navy sm:text-5xl lg:text-[3.6rem] lg:leading-[1.05]">
-              Ваш голос может всё. Настройте его, как камертон, и раскройте
-              потенциал в музыке, профессии и жизни.
-            </h1>
-            <p className="prose-lead">
-              Мы перевели методику Д.Е. Огороднова в цифровую экосистему. Здесь
-              есть интерактивные тренажёры, программы для семи целевых аудиторий
-              и сообщество педагогов. Всё построено на трёх китах методики:
-              алгоритмах, художественном тактировании и ладо-вокальных жестах.
-            </p>
+              <h1 className="text-4xl leading-tight text-brand-navy sm:text-5xl lg:text-[3.6rem] lg:leading-[1.05]">
+                Настройте свой голос — и измените звучание всей вашей жизни.
+              </h1>
+              <p className="prose-lead">
+                Методика Д.Е. Огороднова — уникальное наследие советской
+                педагогики, проверенное десятками лет. Её научный подход помогает
+                не только музыкантам, но и педагогам, психологам, руководителям —
+                всем, чей голос должен звучать уверенно, свободно и убедительно.
+                Очные и онлайн-занятия с сертифицированными педагогами.
+              </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Link href="/contacts" className="btn btn-primary px-8 py-3">
                   Пройти бесплатную диагностику
