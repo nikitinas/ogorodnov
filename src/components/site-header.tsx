@@ -53,8 +53,8 @@ export function SiteHeader() {
           <Link href="/interactive-lab" className="btn btn-outline px-5 py-2">
             Попробовать бесплатно
           </Link>
-          <Link href="/contacts" className="btn btn-primary px-5 py-2">
-            Получить план развития
+          <Link href="/contacts" className="btn btn-primary px-4 py-1.5 text-sm">
+            Получить план
           </Link>
         </div>
 
@@ -144,9 +144,9 @@ export function SiteHeader() {
             <Link
               href="/contacts"
               onClick={() => setIsOpen(false)}
-              className="btn btn-primary px-5 py-3"
+              className="btn btn-primary px-4 py-2 text-sm"
             >
-              Получить план развития
+              Получить план
             </Link>
           </div>
         </div>

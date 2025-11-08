@@ -41,17 +41,17 @@ export function SiteFooter() {
                 <span className="font-serif text-xl font-semibold">
                   Методика Огороднова
                 </span>
-                <span className="text-xs uppercase tracking-[0.3em] text-white/70">
+                <span className="text-xs uppercase tracking-[0.3em] text-white/85">
                   Настройка голоса. Настройка жизни.
                 </span>
               </div>
             </div>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-white/75">
+            <p className="mt-6 max-w-xl text-sm leading-7 text-white/90">
               Комплексная система музыкально-певческого воспитания, которая
               объединяет голос, движение и эмоцию. Мы помогли тысячам учеников,
               педагогов и лидеров услышать и раскрыть свой подлинный голос.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-white/70">
+            <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-white/85">
               <span className="rounded-full border border-white/30 px-3 py-1 uppercase tracking-[0.25em]">
                 PWA-ready
               </span>
@@ -67,10 +67,10 @@ export function SiteFooter() {
           <div className="grid gap-8 sm:grid-cols-3">
             {footerNav.map((column) => (
               <div key={column.title} className="space-y-4">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-white/70">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-white/90">
                   {column.title}
                 </h3>
-                <ul className="space-y-3 text-sm text-white/70">
+                <ul className="space-y-3 text-sm text-white/85">
                   {column.links.map((link) => (
                     <li key={link.label}>
                       <Link
@@ -87,7 +87,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/15 pt-8 text-xs text-white/60">
+        <div className="mt-12 border-t border-white/15 pt-8 text-xs text-white/90">
           <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
             <p>© {new Date().getFullYear()} Методика Огороднова. Все права защищены.</p>
             <div className="flex flex-wrap gap-4">
