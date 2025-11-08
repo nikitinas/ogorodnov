@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   audienceCards,
   ecosystemSteps,
+  eventCards,
   heroHighlights,
   successSpotlight,
 } from "@/data/home";
@@ -114,49 +115,103 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section bg-neutral-50">
-        <div className="section-inner grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <div className="space-y-4">
-            <h2 className="text-3xl text-brand-navy md:text-4xl">
-              Методика за 90 секунд
-            </h2>
-            <p className="text-base leading-7 text-brand-ash">
-              Методика комплексного музыкально-певческого воспитания Огороднова
-              строится на трёх взаимосвязанных практиках. Вместе они формируют
-              точный слух, свободный голос и уверенность в движении.
-            </p>
-            <div className="rounded-3xl border border-dashed border-brand-navy/20 bg-white/80 p-6 text-sm text-brand-ash shadow-inner">
-              Представьте камертон: он настраивает оркестр. Те же принципы
-              работают с человеческим голосом — через движение руки, дыхание и
-              звук. Мы превращаем теорию в практику, доступную каждому.
-            </div>
-              <Link href="/method" className="btn btn-outline px-6 py-2">
-              Читать подробнее о системе
-            </Link>
-          </div>
-          <div className="grid gap-6">
-            {methodPillars.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="rounded-3xl bg-white p-6 shadow-soft"
-              >
-                <h3 className="text-xl text-brand-navy">{pillar.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-brand-ash">
-                  {pillar.summary}
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-brand-slate">
-                  {pillar.highlights.map((highlight) => (
-                    <li key={highlight} className="flex items-start gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-indigo"></span>
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+        <section className="section bg-neutral-50">
+          <div className="section-inner grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <div className="space-y-4">
+              <h2 className="text-3xl text-brand-navy md:text-4xl">
+                Методика за 90 секунд
+              </h2>
+              <p className="text-base leading-7 text-brand-ash">
+                Методика комплексного музыкально-певческого воспитания Огороднова
+                строится на трёх взаимосвязанных практиках. Вместе они формируют
+                точный слух, свободный голос и уверенность в движении.
+              </p>
+              <div className="rounded-3xl border border-dashed border-brand-navy/20 bg-white/80 p-6 text-sm text-brand-ash shadow-inner">
+                Представьте камертон: он настраивает оркестр. Те же принципы
+                работают с человеческим голосом — через движение руки, дыхание и
+                звук. Мы превращаем теорию в практику, доступную каждому.
               </div>
-            ))}
+              <Link href="/method" className="btn btn-outline px-6 py-2">
+                Читать подробнее о системе
+              </Link>
+            </div>
+            <div className="grid gap-6">
+              {methodPillars.map((pillar) => (
+                <div
+                  key={pillar.title}
+                  className="rounded-3xl bg-white p-6 shadow-soft"
+                >
+                  <h3 className="text-xl text-brand-navy">{pillar.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-brand-ash">
+                    {pillar.summary}
+                  </p>
+                  <ul className="mt-4 space-y-2 text-sm text-brand-slate">
+                    {pillar.highlights.map((highlight) => (
+                      <li key={highlight} className="flex items-start gap-2">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-indigo"></span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section id="events" className="section">
+          <div className="section-inner space-y-10">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div className="space-y-3">
+                <h2 className="text-3xl text-brand-navy md:text-4xl">
+                  События и программы на ближайший год
+                </h2>
+                <p className="max-w-3xl text-base leading-7 text-brand-ash">
+                  Курсы повышения квалификации, интенсивы, семинары, онлайн-курсы
+                  и встречи комьюнити. Каждый формат основан на алгоритмах
+                  Огороднова и сопровождается опытными педагогами.
+                </p>
+              </div>
+              <Link href="/events" className="btn btn-outline px-6 py-2">
+                Смотреть все события
+              </Link>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {eventCards.map((event) => (
+                <Link
+                  key={event.slug}
+                  href={`/events#${event.slug}`}
+                  className="group flex h-full flex-col rounded-3xl border border-neutral-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-navy/40 hover:shadow-lg"
+                >
+                  <span className="text-xs uppercase tracking-[0.32em] text-brand-ash">
+                    {event.label}
+                  </span>
+                  <h3 className="mt-4 text-2xl text-brand-navy">{event.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-brand-ash">
+                    {event.summary}
+                  </p>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-brand-navy">
+                    Узнать больше
+                    <svg
+                      className="h-4 w-4 transition group-hover:translate-x-1"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 12h14M13 6l6 6-6 6"
+                      />
+                    </svg>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
 
       <section className="section">
         <div className="section-inner space-y-10">

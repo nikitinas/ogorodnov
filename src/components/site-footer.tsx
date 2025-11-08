@@ -13,6 +13,7 @@ const footerNav = [
     title: "Практика",
     links: [
       { label: "Интерактивная лаборатория", href: "/interactive-lab" },
+      { label: "События и программы", href: "/events" },
       { label: "Аудитории", href: "/#audiences" },
       { label: "Кейсы и истории", href: "/blog" },
     ],

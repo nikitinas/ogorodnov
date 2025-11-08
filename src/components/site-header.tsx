@@ -6,6 +6,7 @@ import { audienceCards } from "@/data/home";
 
 const mainNav = [
   { label: "О методике", href: "/method" },
+  { label: "События", href: "/events" },
   { label: "Интерактивная лаборатория", href: "/interactive-lab" },
   { label: "Блог", href: "/blog" },
   { label: "Контакты", href: "/contacts" },
