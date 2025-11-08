@@ -4,7 +4,7 @@ import { audiences } from "@/data/audiences";
 import { AudiencePageTemplate } from "../_components/audience-page-template";
 
 type AudiencePageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: AudiencePageProps): Promise<Metadata> {
-  const audience = audiences.find((item) => item.slug === params.slug);
+  const { slug } = await params;
+  const audience = audiences.find((item) => item.slug === slug);
 
   if (!audience) {
     return {};
@@ -26,8 +27,8 @@ export async function generateMetadata({
   };
 }
 
-export default function AudiencePage({ params }: AudiencePageProps) {
-  const { slug } = params;
+export default async function AudiencePage({ params }: AudiencePageProps) {
+  const { slug } = await params;
   const audience = audiences.find((item) => item.slug === slug);
 
   if (!audience) {
