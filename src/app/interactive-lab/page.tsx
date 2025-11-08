@@ -52,21 +52,21 @@ export default function InteractiveLabPage() {
               </h2>
               <ul className="mt-4 space-y-3 text-sm text-brand-slate">
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Показывает эталонные движения и звучание через видео, 3D и
                     аудио.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Анализирует ваш голос и жесты, выдаёт обратную связь по
                     точности.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Сохраняет прогресс в личном кабинете и подсказывает, что
                     делать дальше.
@@ -153,7 +153,7 @@ export default function InteractiveLabPage() {
                   <ul className="mt-4 space-y-3 text-sm text-brand-slate">
                     {experience.diagnostics.map((item) => (
                       <li key={item} className="flex gap-2">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                         <span>{item}</span>
                       </li>
                     ))}

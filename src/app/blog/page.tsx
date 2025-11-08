@@ -73,20 +73,20 @@ export default function BlogPage() {
               </h2>
               <ul className="mt-4 space-y-3 text-sm text-brand-slate">
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Глубокие статьи с видео и чек-листами по каждому сегменту.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Вебинары и мастер-классы в записи: дыхание, ритм, лад и
                     сценическое мастерство.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Истории успеха с аудио- и видео-фрагментами «до и после».
                   </span>

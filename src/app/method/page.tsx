@@ -58,21 +58,21 @@ export default function MethodPage() {
               </h2>
               <ul className="mt-4 space-y-3 text-sm text-brand-slate">
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Комплексность: дыхание, слух, ритм и движение работают
                     вместе.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Малые шаги и качество выполнения вместо форсирования
                     результата.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Игровая форма: голос настраивается через движение, жест и
                     эмоцию.
@@ -100,12 +100,12 @@ export default function MethodPage() {
                   {pillar.summary}
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-brand-slate">
-                  {pillar.highlights.map((highlight) => (
-                    <li key={highlight} className="flex gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
+                {pillar.highlights.map((highlight) => (
+                  <li key={highlight} className="flex gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
                 </ul>
               </div>
             ))}
@@ -204,19 +204,19 @@ export default function MethodPage() {
               </h3>
               <ul className="space-y-3 text-sm text-brand-slate">
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Сертификационные программы с практикумами и супервизией.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Методические комплекты: алгоритмы, аудио, планы уроков.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Онлайн-комьюнити для обмена опытом и совместных проектов.
                   </span>
@@ -246,12 +246,12 @@ export default function MethodPage() {
               >
                 <h3 className="text-xl text-brand-navy">{group.title}</h3>
                 <ul className="mt-3 space-y-3 text-sm text-brand-ash">
-                  {group.items.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
+                {group.items.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
+                    <span>{item}</span>
+                  </li>
+                ))}
                 </ul>
               </div>
             ))}
