@@ -52,20 +52,20 @@ export default function BlogPage() {
                 тегируются по сегментам и целям, чтобы вы мгновенно находили
                 нужное.
               </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <Link
-                  href="/contacts?topic=media"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-                >
-                  Подписаться на анонсы
-                </Link>
-                <Link
-                  href="/interactive-lab"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-                >
-                  Попробовать интерактивы
-                </Link>
-              </div>
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href="/contacts?topic=media"
+                    className="btn btn-primary px-7 py-3"
+                  >
+                    Подписаться на анонсы
+                  </Link>
+                  <Link
+                    href="/interactive-lab"
+                    className="btn btn-outline px-7 py-3"
+                  >
+                    Попробовать интерактивы
+                  </Link>
+                </div>
             </div>
             <div className="rounded-3xl border border-dashed border-brand-navy/30 bg-white/90 p-8 shadow-soft">
               <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-ash">
@@ -73,20 +73,20 @@ export default function BlogPage() {
               </h2>
               <ul className="mt-4 space-y-3 text-sm text-brand-slate">
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Глубокие статьи с видео и чек-листами по каждому сегменту.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Вебинары и мастер-классы в записи: дыхание, ритм, лад и
                     сценическое мастерство.
                   </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-indigo" />
                   <span>
                     Истории успеха с аудио- и видео-фрагментами «до и после».
                   </span>
@@ -154,7 +154,7 @@ export default function BlogPage() {
             </div>
             <Link
               href="/contacts?topic=suggest"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
+              className="btn btn-outline px-6 py-2"
             >
               Предложить тему
             </Link>
@@ -223,7 +223,7 @@ export default function BlogPage() {
           </div>
           <Link
             href="/contacts?topic=webinars"
-            className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
+              className="btn btn-primary px-8 py-3"
           >
             Узнать расписание вебинаров
           </Link>
@@ -246,13 +246,13 @@ export default function BlogPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/contacts?topic=story"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
+                  className="btn btn-primary px-8 py-3 shadow-lg"
               >
                 Рассказать историю
               </Link>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+                  className="btn btn-on-dark px-8 py-3"
               >
                 Попробовать методику
               </Link>
