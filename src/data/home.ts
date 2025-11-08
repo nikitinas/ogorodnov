@@ -1,4 +1,5 @@
 import { audiences } from "./audiences";
+import { eventCategories } from "./events";
 
 export const heroHighlights = [
   {
@@ -40,6 +41,13 @@ export const audienceCards = audiences.map((segment) => ({
   heroLabel: segment.heroLabel,
   headline: segment.headline,
   description: segment.subheadline,
+}));
+
+export const eventCards = eventCategories.map((event) => ({
+  slug: event.slug,
+  name: event.name,
+  label: event.label,
+  summary: event.summary,
 }));
 
 export const successSpotlight = [
