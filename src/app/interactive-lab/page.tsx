@@ -29,13 +29,13 @@ export default function InteractiveLabPage() {
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Link
                   href="/contacts?topic=demo"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
                 >
                   Получить доступ к полной версии
                 </Link>
                 <Link
                   href="#experiences"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-8 py-3 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-8 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
                 >
                   Смотреть тренажёры
                 </Link>
@@ -53,15 +53,24 @@ export default function InteractiveLabPage() {
               <ul className="mt-4 space-y-3 text-sm text-brand-slate">
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
-                  <span>Показывает эталонные движения и звучание через видео, 3D и аудио.</span>
+                  <span>
+                    Показывает эталонные движения и звучание через видео, 3D и
+                    аудио.
+                  </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
-                  <span>Анализирует ваш голос и жесты, выдаёт обратную связь по точности.</span>
+                  <span>
+                    Анализирует ваш голос и жесты, выдаёт обратную связь по
+                    точности.
+                  </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
-                  <span>Сохраняет прогресс в личном кабинете и подсказывает, что делать дальше.</span>
+                  <span>
+                    Сохраняет прогресс в личном кабинете и подсказывает, что
+                    делать дальше.
+                  </span>
                 </li>
               </ul>
             </div>
@@ -123,7 +132,10 @@ export default function InteractiveLabPage() {
                   </p>
                   <div className="space-y-3 text-sm text-brand-slate">
                     {experience.features.map((feature) => (
-                      <div key={feature.title} className="rounded-2xl bg-neutral-50 p-4">
+                      <div
+                        key={feature.title}
+                        className="rounded-2xl bg-neutral-50 p-4"
+                      >
                         <h4 className="text-sm font-semibold text-brand-navy">
                           {feature.title}
                         </h4>
@@ -166,30 +178,37 @@ export default function InteractiveLabPage() {
               Интеграция с личным кабинетом
             </h2>
             <p className="max-w-2xl text-base leading-7 text-brand-ash">
-              Лаборатория — часть единой экосистемы. Все результаты синхронизируются
-              с личным кабинетом и помогают выстраивать индивидуальные маршруты обучения.
+              Лаборатория — часть единой экосистемы. Все результаты
+              синхронизируются с личным кабинетом и помогают выстраивать
+              индивидуальные маршруты обучения.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl bg-white p-6 shadow-soft">
-              <h3 className="text-xl text-brand-navy">Персональные рекомендации</h3>
+              <h3 className="text-xl text-brand-navy">
+                Персональные рекомендации
+              </h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                После каждой сессии вы получаете упражнения и материалы для закрепления
-                результата вне платформы.
+                После каждой сессии вы получаете упражнения и материалы для
+                закрепления результата вне платформы.
               </p>
             </div>
             <div className="rounded-3xl bg-white p-6 shadow-soft">
-              <h3 className="text-xl text-brand-navy">Совместная работа с педагогом</h3>
+              <h3 className="text-xl text-brand-navy">
+                Совместная работа с педагогом
+              </h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Педагог видит ваши попытки и может оставить комментарии, настроить темп
-                и сложность заданий.
+                Педагог видит ваши попытки и может оставить комментарии,
+                настроить темп и сложность заданий.
               </p>
             </div>
             <div className="rounded-3xl bg-white p-6 shadow-soft">
-              <h3 className="text-xl text-brand-navy">Геймификация и мотивация</h3>
+              <h3 className="text-xl text-brand-navy">
+                Геймификация и мотивация
+              </h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Баллы, уровни и бейджи поощряют регулярную практику и помогают удерживать
-                интерес у детей и взрослых.
+                Баллы, уровни и бейджи поощряют регулярную практику и помогают
+                удерживать интерес у детей и взрослых.
               </p>
             </div>
           </div>
@@ -204,20 +223,21 @@ export default function InteractiveLabPage() {
                 Хотите демо для вашей команды или класса?
               </h2>
               <p className="text-sm leading-7 text-white/80">
-                Мы проведём живую сессию, покажем, как работает лаборатория, и подскажем,
-                как встроить её в образовательный процесс или корпоративный тренинг.
+                Мы проведём живую сессию, покажем, как работает лаборатория, и
+                подскажем, как встроить её в образовательный процесс или
+                корпоративный тренинг.
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/contacts?topic=demo"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
               >
                 Запросить демо
               </Link>
               <Link
                 href="/contacts?topic=partners"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
               >
                 Стать партнёром
               </Link>

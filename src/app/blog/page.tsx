@@ -3,7 +3,8 @@ import { audienceCards } from "@/data/home";
 
 const plannedPosts = [
   {
-    title: "Как ладо-вокальные жесты помогают «непоющим» детям обрести точный слух",
+    title:
+      "Как ладо-вокальные жесты помогают «непоющим» детям обрести точный слух",
     segment: "Родители и педагоги",
     summary:
       "Разбираем шаги работы с жестами, делимся видео-демонстрациями и чек-листом домашних упражнений.",
@@ -42,21 +43,25 @@ export default function BlogPage() {
                 Блог и медиа
               </span>
               <h1 className="text-4xl leading-tight text-brand-navy md:text-5xl">
-                Истории, исследования и практики, которые вдохновляют звучать свободно
+                Истории, исследования и практики, которые вдохновляют звучать
+                свободно
               </h1>
               <p className="text-lg leading-8 text-brand-ash">
-                Мы собираем опыт педагогов, музыкантов, лидеров, терапевтов и родителей, которые внедряют методику. Материалы автоматически тегируются по сегментам и целям, чтобы вы мгновенно находили нужное.
+                Мы собираем опыт педагогов, музыкантов, лидеров, терапевтов и
+                родителей, которые внедряют методику. Материалы автоматически
+                тегируются по сегментам и целям, чтобы вы мгновенно находили
+                нужное.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Link
                   href="/contacts?topic=media"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
                 >
                   Подписаться на анонсы
                 </Link>
                 <Link
                   href="/interactive-lab"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
                 >
                   Попробовать интерактивы
                 </Link>
@@ -69,15 +74,22 @@ export default function BlogPage() {
               <ul className="mt-4 space-y-3 text-sm text-brand-slate">
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
-                  <span>Глубокие статьи с видео и чек-листами по каждому сегменту.</span>
+                  <span>
+                    Глубокие статьи с видео и чек-листами по каждому сегменту.
+                  </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
-                  <span>Вебинары и мастер-классы в записи: дыхание, ритм, лад и сценическое мастерство.</span>
+                  <span>
+                    Вебинары и мастер-классы в записи: дыхание, ритм, лад и
+                    сценическое мастерство.
+                  </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-coral" />
-                  <span>Истории успеха с аудио- и видео-фрагментами «до и после».</span>
+                  <span>
+                    Истории успеха с аудио- и видео-фрагментами «до и после».
+                  </span>
                 </li>
               </ul>
             </div>
@@ -87,7 +99,9 @@ export default function BlogPage() {
 
       <section className="section bg-neutral-50">
         <div className="section-inner space-y-8">
-          <h2 className="text-3xl text-brand-navy md:text-4xl">Темы по аудиториям</h2>
+          <h2 className="text-3xl text-brand-navy md:text-4xl">
+            Темы по аудиториям
+          </h2>
           <div className="grid gap-6 md:grid-cols-3">
             {audienceCards.map((segment) => (
               <div
@@ -134,12 +148,13 @@ export default function BlogPage() {
                 Редакционный план
               </h2>
               <p className="mt-3 max-w-2xl text-base leading-7 text-brand-ash">
-                Мы готовим лонгриды и интервью на основе материалов из архива и текущих проектов. Вот несколько ближайших публикаций.
+                Мы готовим лонгриды и интервью на основе материалов из архива и
+                текущих проектов. Вот несколько ближайших публикаций.
               </p>
             </div>
             <Link
               href="/contacts?topic=suggest"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
             >
               Предложить тему
             </Link>
@@ -155,7 +170,9 @@ export default function BlogPage() {
                   {post.segment}
                 </span>
                 <h3 className="mt-4 text-xl text-brand-navy">{post.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-brand-ash">{post.summary}</p>
+                <p className="mt-3 text-sm leading-6 text-brand-ash">
+                  {post.summary}
+                </p>
                 <div className="mt-auto rounded-2xl bg-brand-sand/70 p-4 text-xs font-semibold uppercase tracking-[0.3em] text-brand-ash">
                   Выходит: {post.eta}
                 </div>
@@ -172,32 +189,41 @@ export default function BlogPage() {
               Вебинары и медиа-центр
             </h2>
             <p className="max-w-2xl text-base leading-7 text-brand-ash">
-              Один раз в месяц мы проводим открытый вебинар: показываем упражнения, отвечаем на вопросы и разбираем сложные кейсы. Записи доступны в медиа-центре.
+              Один раз в месяц мы проводим открытый вебинар: показываем
+              упражнения, отвечаем на вопросы и разбираем сложные кейсы. Записи
+              доступны в медиа-центре.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl bg-white p-6 shadow-soft">
               <h3 className="text-xl text-brand-navy">Живые практикумы</h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Онлайн-занятия с педагогами методики: дыхание перед выступлением, ладовые диктанты, художественное тактирование.
+                Онлайн-занятия с педагогами методики: дыхание перед
+                выступлением, ладовые диктанты, художественное тактирование.
               </p>
             </div>
             <div className="rounded-3xl bg-white p-6 shadow-soft">
-              <h3 className="text-xl text-brand-navy">Кейс-стори формата «до/после»</h3>
+              <h3 className="text-xl text-brand-navy">
+                Кейс-стори формата «до/после»
+              </h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Аудио и видео, где видно прогресс учеников, руководителей и артистов после 4–6 недель практики.
+                Аудио и видео, где видно прогресс учеников, руководителей и
+                артистов после 4–6 недель практики.
               </p>
             </div>
             <div className="rounded-3xl bg-white p-6 shadow-soft">
-              <h3 className="text-xl text-brand-navy">Библиотека PDF и карточек</h3>
+              <h3 className="text-xl text-brand-navy">
+                Библиотека PDF и карточек
+              </h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Скачайте алгоритмы, планы уроков и микро-практики. Особенно полезно педагогам и психологам.
+                Скачайте алгоритмы, планы уроков и микро-практики. Особенно
+                полезно педагогам и психологам.
               </p>
             </div>
           </div>
           <Link
             href="/contacts?topic=webinars"
-            className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
+            className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
           >
             Узнать расписание вебинаров
           </Link>
@@ -212,19 +238,21 @@ export default function BlogPage() {
                 Поделитесь своей историей
               </h2>
               <p className="text-sm leading-7 text-white/80">
-                Ваш опыт внедрения методики — ценность для сообщества. Заполните форму, и мы подготовим совместный материал: текст, подкаст или видео.
+                Ваш опыт внедрения методики — ценность для сообщества. Заполните
+                форму, и мы подготовим совместный материал: текст, подкаст или
+                видео.
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/contacts?topic=story"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
               >
                 Рассказать историю
               </Link>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
               >
                 Попробовать методику
               </Link>

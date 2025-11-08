@@ -11,9 +11,9 @@ export async function generateStaticParams() {
   return audiences.map((audience) => ({ slug: audience.slug }));
 }
 
-export async function generateMetadata(
-  { params }: AudiencePageProps,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: AudiencePageProps): Promise<Metadata> {
   const audience = audiences.find((item) => item.slug === params.slug);
 
   if (!audience) {
@@ -62,13 +62,13 @@ export default function AudiencePage({ params }: AudiencePageProps) {
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Link
                   href={audience.primaryCta.href}
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
                 >
                   {audience.primaryCta.label}
                 </Link>
                 <Link
                   href="/interactive-lab"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
                 >
                   Попробовать интерактивы
                 </Link>
@@ -88,7 +88,10 @@ export default function AudiencePage({ params }: AudiencePageProps) {
               </p>
               <div className="mt-6 space-y-4 text-sm text-brand-slate">
                 {audience.insights.slice(0, 2).map((insight) => (
-                  <div key={insight.title} className="rounded-2xl bg-neutral-50 p-4">
+                  <div
+                    key={insight.title}
+                    className="rounded-2xl bg-neutral-50 p-4"
+                  >
                     <h3 className="font-semibold text-brand-navy">
                       {insight.title}
                     </h3>
@@ -148,7 +151,7 @@ export default function AudiencePage({ params }: AudiencePageProps) {
             </div>
             <Link
               href="/interactive-lab"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
             >
               Смотреть интерактивы
             </Link>
@@ -204,7 +207,7 @@ export default function AudiencePage({ params }: AudiencePageProps) {
             </div>
             <Link
               href="/blog"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
             >
               Больше кейсов в блоге
             </Link>
@@ -240,21 +243,21 @@ export default function AudiencePage({ params }: AudiencePageProps) {
                 Готовы настроить свой голос?
               </h2>
               <p className="text-sm leading-7 text-white/80">
-                Мы подберём упражнения, материалы и формат занятий, соответствующие
-                вашим целям. Запишитесь на бесплатную диагностику, и вы получите
-                план на ближайшие 4 недели.
+                Мы подберём упражнения, материалы и формат занятий,
+                соответствующие вашим целям. Запишитесь на бесплатную
+                диагностику, и вы получите план на ближайшие 4 недели.
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href={audience.primaryCta.href}
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
               >
                 {audience.primaryCta.label}
               </Link>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
               >
                 Попробовать лабораторию
               </Link>

@@ -17,7 +17,8 @@ const contactChannels = [
   {
     title: "Партнёрства и медиа",
     email: "media@ogorodnov-method.ru",
-    description: "Интервью, публикации, совместные проекты, интеграция методики в мероприятия.",
+    description:
+      "Интервью, публикации, совместные проекты, интеграция методики в мероприятия.",
   },
   {
     title: "Поддержка пользователей",
@@ -41,18 +42,20 @@ export default function ContactsPage() {
                 Давайте настроим ваш голос и программу обучения
               </h1>
               <p className="text-lg leading-8 text-brand-ash">
-                Расскажите, для каких целей вам нужна методика, — и мы подберём формат: онлайн, офлайн, индивидуально или для команды. Ответим в течение одного рабочего дня.
+                Расскажите, для каких целей вам нужна методика, — и мы подберём
+                формат: онлайн, офлайн, индивидуально или для команды. Ответим в
+                течение одного рабочего дня.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <a
                   href="mailto:hello@ogorodnov-method.ru"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
                 >
                   Написать на почту
                 </a>
                 <Link
                   href="/interactive-lab"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
                 >
                   Попробовать интерактивы
                 </Link>
@@ -63,10 +66,12 @@ export default function ContactsPage() {
                 Время работы
               </h2>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Пн–Пт: 10:00–19:00 (МСК). Суббота: по записи. Воскресенье — выходной.
+                Пн–Пт: 10:00–19:00 (МСК). Суббота: по записи. Воскресенье —
+                выходной.
               </p>
               <p className="mt-4 text-sm leading-6 text-brand-ash">
-                Онлайн-встречи проводим в Zoom, Teams или другой платформе по вашему выбору.
+                Онлайн-встречи проводим в Zoom, Teams или другой платформе по
+                вашему выбору.
               </p>
             </div>
           </div>
@@ -118,7 +123,8 @@ export default function ContactsPage() {
               Заполните форму — мы вернёмся в течение рабочего дня
             </h2>
             <p className="text-base leading-7 text-brand-ash">
-              Пока что заявка отправляется на почту. Функционал личного кабинета с чат-ботом в разработке.
+              Пока что заявка отправляется на почту. Функционал личного кабинета
+              с чат-ботом в разработке.
             </p>
             <form
               className="space-y-5"
@@ -170,7 +176,7 @@ export default function ContactsPage() {
               </label>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
               >
                 Отправить заявку
               </button>
@@ -188,7 +194,8 @@ export default function ContactsPage() {
               Карта сертифицированных педагогов
             </h3>
             <p className="mt-4 text-sm leading-6 text-brand-ash">
-              Мы формируем географию специалистов, работающих по методике. Полная интерактивная карта появится в следующем релизе.
+              Мы формируем географию специалистов, работающих по методике.
+              Полная интерактивная карта появится в следующем релизе.
             </p>
             <div className="mt-6 space-y-4 text-sm text-brand-slate">
               <div className="rounded-2xl bg-neutral-50 p-4">
@@ -204,7 +211,8 @@ export default function ContactsPage() {
                   Санкт-Петербург
                 </h4>
                 <p className="mt-2 text-sm text-brand-ash">
-                  Центр методики, 5 студий раннего развития, лаборатория в педагогическом университете.
+                  Центр методики, 5 студий раннего развития, лаборатория в
+                  педагогическом университете.
                 </p>
               </div>
               <div className="rounded-2xl bg-neutral-50 p-4">
@@ -212,13 +220,14 @@ export default function ContactsPage() {
                   Онлайн
                 </h4>
                 <p className="mt-2 text-sm text-brand-ash">
-                  Сертифицированные педагоги и коучи для индивидуальных занятий по всему миру.
+                  Сертифицированные педагоги и коучи для индивидуальных занятий
+                  по всему миру.
                 </p>
               </div>
             </div>
             <Link
               href="/contacts?topic=partners"
-              className="mt-6 inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+              className="mt-6 inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
             >
               Стать партнёрской студией
             </Link>
@@ -228,30 +237,35 @@ export default function ContactsPage() {
 
       <section className="section bg-brand-sand/70" id="partners">
         <div className="section-inner space-y-8">
-          <h2 className="text-3xl text-brand-navy md:text-4xl">Для партнёров и медиа</h2>
+          <h2 className="text-3xl text-brand-navy md:text-4xl">
+            Для партнёров и медиа
+          </h2>
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl bg-white p-6 shadow-soft">
               <h3 className="text-xl text-brand-navy">Медиа-кит</h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Логотипы, фото, биография Д.Е. Огороднова, факт-листы и описания тренажёров.
+                Логотипы, фото, биография Д.Е. Огороднова, факт-листы и описания
+                тренажёров.
               </p>
             </div>
             <div className="rounded-3xl bg-white p-6 shadow-soft">
               <h3 className="text-xl text-brand-navy">Партнёрские программы</h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Совместные курсы, white-label решения для школ и компаний, франчайзинговые проекты.
+                Совместные курсы, white-label решения для школ и компаний,
+                франчайзинговые проекты.
               </p>
             </div>
             <div className="rounded-3xl bg-white p-6 shadow-soft">
               <h3 className="text-xl text-brand-navy">Лекции и выступления</h3>
               <p className="mt-3 text-sm leading-6 text-brand-ash">
-                Выступления для конференций, фестивалей, корпоративных мероприятий. Подготовим формат под аудиторию.
+                Выступления для конференций, фестивалей, корпоративных
+                мероприятий. Подготовим формат под аудиторию.
               </p>
             </div>
           </div>
           <Link
             href="mailto:media@ogorodnov-method.ru"
-            className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
+            className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
           >
             Запросить медиа-кит
           </Link>
@@ -266,19 +280,20 @@ export default function ContactsPage() {
                 Запишите голос уже сегодня
               </h2>
               <p className="text-sm leading-7 text-white/80">
-                Выберите сегмент и напишите пару предложений о себе — мы подберём диагноста, педагога или наставника на ближайшие даты.
+                Выберите сегмент и напишите пару предложений о себе — мы
+                подберём диагноста, педагога или наставника на ближайшие даты.
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <a
                 href="mailto:hello@ogorodnov-method.ru"
-                className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-brand-navy shadow-lg transition hover:brightness-110"
+                className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-brand-navy shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
               >
                 hello@ogorodnov-method.ru
               </a>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
               >
                 Попробовать лабораторию
               </Link>

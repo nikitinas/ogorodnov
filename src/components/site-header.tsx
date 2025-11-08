@@ -24,12 +24,9 @@ export function SiteHeader() {
           <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-navy text-white shadow-soft">
             <span className="text-xl font-semibold leading-none">𝄞</span>
           </div>
-          <div className="flex flex-col leading-tight">
-            <span className="font-serif text-lg font-semibold">
+          <div className="flex flex-col">
+            <span className="font-serif text-lg font-semibold leading-tight">
               Методика Огороднова
-            </span>
-            <span className="text-xs uppercase tracking-[0.2em] text-brand-ash">
-              Настройка голоса и движения
             </span>
           </div>
         </Link>
@@ -37,7 +34,7 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-8 text-sm font-medium text-brand-ash lg:flex">
           <Link
             href="/#audiences"
-            className="rounded-full px-4 py-2 transition hover:bg-neutral-100 hover:text-brand-navy"
+            className="whitespace-nowrap rounded-full px-4 py-2 transition-colors duration-200 hover:bg-neutral-100 hover:text-brand-navy"
           >
             Для кого
           </Link>
@@ -45,7 +42,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-full px-4 py-2 transition hover:bg-neutral-100 hover:text-brand-navy"
+              className="whitespace-nowrap rounded-full px-4 py-2 transition-colors duration-200 hover:bg-neutral-100 hover:text-brand-navy"
             >
               {item.label}
             </Link>
@@ -55,13 +52,13 @@ export function SiteHeader() {
         <div className="hidden items-center gap-4 lg:flex">
           <Link
             href="/interactive-lab"
-            className="rounded-full border border-brand-navy px-5 py-2 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+            className="rounded-full border border-brand-navy px-5 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
           >
             Попробовать бесплатно
           </Link>
           <Link
             href="/contacts"
-            className="rounded-full bg-brand-coral px-5 py-2 text-sm font-semibold text-white shadow-soft transition hover:shadow-lg hover:brightness-105"
+            className="rounded-full bg-brand-coral px-5 py-2 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
           >
             Получить план развития
           </Link>

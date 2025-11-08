@@ -31,13 +31,13 @@ export default function Home() {
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contacts"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition hover:shadow-lg hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
               >
                 Пройти бесплатную диагностику
               </Link>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-brand-navy px-8 py-3 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+                className="inline-flex items-center justify-center rounded-full border border-brand-navy px-8 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
               >
                 Попробовать лабораторию
               </Link>
@@ -49,7 +49,10 @@ export default function Home() {
             </h2>
             <dl className="grid gap-6">
               {heroHighlights.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-neutral-100 p-5">
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-neutral-100 p-5"
+                >
                   <dt className="font-serif text-xl font-semibold text-brand-navy">
                     {item.title}
                   </dt>
@@ -78,7 +81,7 @@ export default function Home() {
             </div>
             <Link
               href="/interactive-lab"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
             >
               С чего начать?
             </Link>
@@ -140,7 +143,7 @@ export default function Home() {
             </div>
             <Link
               href="/method"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
             >
               Читать подробнее о системе
             </Link>
@@ -266,13 +269,13 @@ export default function Home() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/contacts"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
               >
                 Пройти тест и получить план
               </Link>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
               >
                 Узнать о лаборатории
               </Link>
