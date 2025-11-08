@@ -59,19 +59,19 @@ export default function AudiencePage({ params }: AudiencePageProps) {
               <p className="text-base leading-7 text-brand-slate">
                 {audience.description}
               </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <Link
-                  href={audience.primaryCta.href}
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-                >
-                  {audience.primaryCta.label}
-                </Link>
-                <Link
-                  href="/interactive-lab"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-                >
-                  Попробовать интерактивы
-                </Link>
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href={audience.primaryCta.href}
+                    className="btn btn-primary px-7 py-3"
+                  >
+                    {audience.primaryCta.label}
+                  </Link>
+                  <Link
+                    href="/interactive-lab"
+                    className="btn btn-outline px-7 py-3"
+                  >
+                    Попробовать интерактивы
+                  </Link>
               </div>
               {audience.primaryCta.description ? (
                 <p className="text-sm text-brand-ash">
@@ -149,10 +149,10 @@ export default function AudiencePage({ params }: AudiencePageProps) {
                 сразу после консультации или диагностики.
               </p>
             </div>
-            <Link
-              href="/interactive-lab"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-            >
+              <Link
+                href="/interactive-lab"
+                className="btn btn-outline px-6 py-2"
+              >
               Смотреть интерактивы
             </Link>
           </div>
@@ -205,10 +205,7 @@ export default function AudiencePage({ params }: AudiencePageProps) {
                 Реальные кейсы учеников и клиентов, которые проходили наш путь.
               </p>
             </div>
-            <Link
-              href="/blog"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-            >
+              <Link href="/blog" className="btn btn-outline px-6 py-2">
               Больше кейсов в блоге
             </Link>
           </div>
@@ -249,15 +246,15 @@ export default function AudiencePage({ params }: AudiencePageProps) {
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link
-                href={audience.primaryCta.href}
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
-              >
+                <Link
+                  href={audience.primaryCta.href}
+                  className="btn btn-primary px-8 py-3 shadow-lg"
+                >
                 {audience.primaryCta.label}
               </Link>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+                  className="btn btn-on-dark px-8 py-3"
               >
                 Попробовать лабораторию
               </Link>

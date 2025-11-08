@@ -18,40 +18,40 @@ export default function MethodPage() {
       <section className="section pb-0 pt-16">
         <div className="section-inner space-y-10">
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-brand-sand px-4 py-2 text-xs uppercase tracking-[0.32em] text-brand-ash">
-                Методика Огороднова
-              </span>
-              <h1 className="text-4xl leading-tight text-brand-navy md:text-5xl">
-                Комплексная система, которая синхронизирует голос, движение и
-                мышление
-              </h1>
-              <p className="text-lg leading-8 text-brand-ash">
-                Методика Д.Е. Огороднова выросла из практики работы с детскими
-                хорами, но сегодня применяется педагогами, музыкантами,
-                психологами, лидерами и артистами. Её сила — в точной
-                регламентации движений, дыхания и звука.
-              </p>
-              <p className="text-base leading-7 text-brand-slate">
-                Мы бережно оцифровали наследие, сохранив научную базу и
-                философию, и дополнили её современными сервисами, интерактивами
-                и обучающими программами.
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <Link
-                  href="/interactive-lab"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-                >
-                  Посмотреть лабораторию
-                </Link>
-                <Link
-                  href="/contacts?topic=method"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-                >
-                  Получить консультацию
-                </Link>
+              <div className="space-y-6">
+                <span className="inline-flex items-center gap-2 rounded-full bg-brand-sand px-4 py-2 text-xs uppercase tracking-[0.32em] text-brand-ash">
+                  Методика Огороднова
+                </span>
+                <h1 className="text-4xl leading-tight text-brand-navy md:text-5xl">
+                  Комплексная система, которая синхронизирует голос, движение и
+                  мышление
+                </h1>
+                <p className="text-lg leading-8 text-brand-ash">
+                  Методика Д.Е. Огороднова выросла из практики работы с детскими
+                  хорами, но сегодня применяется педагогами, музыкантами,
+                  психологами, лидерами и артистами. Её сила — в точной
+                  регламентации движений, дыхания и звука.
+                </p>
+                <p className="text-base leading-7 text-brand-slate">
+                  Мы бережно оцифровали наследие, сохранив научную базу и
+                  философию, и дополнили её современными сервисами, интерактивами
+                  и обучающими программами.
+                </p>
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href="/interactive-lab"
+                    className="btn btn-primary px-7 py-3"
+                  >
+                    Посмотреть лабораторию
+                  </Link>
+                  <Link
+                    href="/contacts?topic=method"
+                    className="btn btn-outline px-7 py-3"
+                  >
+                    Получить консультацию
+                  </Link>
+                </div>
               </div>
-            </div>
             <div className="rounded-3xl border border-dashed border-brand-navy/30 bg-white/90 p-8 shadow-soft">
               <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-ash">
                 Базовые принципы
@@ -126,10 +126,7 @@ export default function MethodPage() {
                 чувство ритма, эмоциональный интеллект и дисциплину.
               </p>
             </div>
-            <Link
-              href="#resources"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-            >
+          <Link href="#resources" className="btn btn-outline px-6 py-2">
               Источники и материалы
             </Link>
           </div>
@@ -227,7 +224,7 @@ export default function MethodPage() {
               </ul>
               <Link
                 href="/contacts?topic=teachers"
-                className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
+                className="btn btn-outline px-6 py-2"
               >
                 Присоединиться к программе
               </Link>
@@ -267,10 +264,10 @@ export default function MethodPage() {
             открыт для участников программы и подписчиков лаборатории. Оставьте
             заявку, чтобы получить набор материалов.
           </div>
-          <Link
-            href="/contacts?topic=materials"
-            className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-          >
+        <Link
+          href="/contacts?topic=materials"
+          className="btn btn-primary px-8 py-3"
+        >
             Получить комплект материалов
           </Link>
         </div>
@@ -292,13 +289,13 @@ export default function MethodPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/contacts"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
+                  className="btn btn-primary px-8 py-3 shadow-lg"
               >
                 Назначить встречу
               </Link>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+                  className="btn btn-on-dark px-8 py-3"
               >
                 Попробовать лабораторию
               </Link>

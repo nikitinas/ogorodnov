@@ -50,16 +50,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Link
-            href="/interactive-lab"
-            className="rounded-full border border-brand-navy px-5 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-          >
+          <Link href="/interactive-lab" className="btn btn-outline px-5 py-2">
             Попробовать бесплатно
           </Link>
-          <Link
-            href="/contacts"
-            className="rounded-full bg-brand-coral px-5 py-2 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-          >
+          <Link href="/contacts" className="btn btn-primary px-5 py-2">
             Получить план развития
           </Link>
         </div>
@@ -143,14 +137,14 @@ export function SiteHeader() {
             <Link
               href="/interactive-lab"
               onClick={() => setIsOpen(false)}
-              className="rounded-full border border-brand-navy px-5 py-3 text-center text-sm font-semibold text-brand-navy"
+              className="btn btn-outline px-5 py-3"
             >
               Попробовать бесплатно
             </Link>
             <Link
               href="/contacts"
               onClick={() => setIsOpen(false)}
-              className="rounded-full bg-brand-coral px-5 py-3 text-center text-sm font-semibold text-white shadow-soft"
+              className="btn btn-primary px-5 py-3"
             >
               Получить план развития
             </Link>

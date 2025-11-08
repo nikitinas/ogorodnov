@@ -26,20 +26,20 @@ export default function InteractiveLabPage() {
                 видите, слышите и чувствуете, как голос, движение и дыхание
                 синхронизируются.
               </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <Link
-                  href="/contacts?topic=demo"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-                >
-                  Получить доступ к полной версии
-                </Link>
-                <Link
-                  href="#experiences"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-8 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-                >
-                  Смотреть тренажёры
-                </Link>
-              </div>
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href="/contacts?topic=demo"
+                    className="btn btn-primary px-8 py-3"
+                  >
+                    Получить доступ к полной версии
+                  </Link>
+                  <Link
+                    href="#experiences"
+                    className="btn btn-outline px-8 py-3"
+                  >
+                    Смотреть тренажёры
+                  </Link>
+                </div>
               <p className="text-sm text-brand-ash">
                 Бесплатная демо-версия доступна всем зарегистрированным
                 пользователям. Полный функционал — по подписке или в рамках
@@ -231,13 +231,13 @@ export default function InteractiveLabPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/contacts?topic=demo"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
+                  className="btn btn-primary px-8 py-3 shadow-lg"
               >
                 Запросить демо
               </Link>
               <Link
                 href="/contacts?topic=partners"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+                  className="btn btn-on-dark px-8 py-3"
               >
                 Стать партнёром
               </Link>

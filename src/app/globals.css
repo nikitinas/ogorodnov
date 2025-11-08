@@ -49,3 +49,21 @@ a {
   padding-left: clamp(1.5rem, 4vw, 3rem);
   padding-right: clamp(1.5rem, 4vw, 3rem);
 }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full text-center text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-coral;
+  }
+
+  .btn-primary {
+    @apply bg-brand-coral text-white shadow-soft hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg;
+  }
+
+  .btn-outline {
+    @apply border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white;
+  }
+
+  .btn-on-dark {
+    @apply border border-white/60 text-white hover:bg-white hover:text-brand-navy;
+  }
+}

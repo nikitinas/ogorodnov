@@ -33,34 +33,31 @@ export default function ContactsPage() {
     <>
       <section className="section pb-0 pt-16">
         <div className="section-inner space-y-8">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-brand-sand px-4 py-2 text-xs uppercase tracking-[0.32em] text-brand-ash">
-                Контакты
-              </span>
-              <h1 className="text-4xl leading-tight text-brand-navy md:text-5xl">
-                Давайте настроим ваш голос и программу обучения
-              </h1>
-              <p className="text-lg leading-8 text-brand-ash">
-                Расскажите, для каких целей вам нужна методика, — и мы подберём
-                формат: онлайн, офлайн, индивидуально или для команды. Ответим в
-                течение одного рабочего дня.
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="mailto:hello@ogorodnov-method.ru"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-                >
-                  Написать на почту
-                </a>
-                <Link
-                  href="/interactive-lab"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-navy px-7 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-                >
-                  Попробовать интерактивы
-                </Link>
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+              <div className="space-y-6">
+                <span className="inline-flex items-center gap-2 rounded-full bg-brand-sand px-4 py-2 text-xs uppercase tracking-[0.32em] text-brand-ash">
+                  Контакты
+                </span>
+                <h1 className="text-4xl leading-tight text-brand-navy md:text-5xl">
+                  Давайте настроим ваш голос и программу обучения
+                </h1>
+                <p className="text-lg leading-8 text-brand-ash">
+                  Расскажите, для каких целей вам нужна методика, — и мы подберём
+                  формат: онлайн, офлайн, индивидуально или для команды. Ответим в
+                  течение одного рабочего дня.
+                </p>
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <a
+                    href="mailto:hello@ogorodnov-method.ru"
+                    className="btn btn-primary px-7 py-3"
+                  >
+                    Написать на почту
+                  </a>
+                  <Link href="/interactive-lab" className="btn btn-outline px-7 py-3">
+                    Попробовать интерактивы
+                  </Link>
+                </div>
               </div>
-            </div>
             <div className="rounded-3xl border border-dashed border-brand-navy/30 bg-white/90 p-8 shadow-soft">
               <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-ash">
                 Время работы
@@ -126,12 +123,12 @@ export default function ContactsPage() {
               Пока что заявка отправляется на почту. Функционал личного кабинета
               с чат-ботом в разработке.
             </p>
-            <form
-              className="space-y-5"
-              action="mailto:hello@ogorodnov-method.ru"
-              method="post"
-              encType="text/plain"
-            >
+              <form
+                className="space-y-5"
+                action="mailto:hello@ogorodnov-method.ru"
+                method="post"
+                encType="text/plain"
+              >
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="text-sm font-semibold text-brand-slate">
                   Имя
@@ -174,10 +171,10 @@ export default function ContactsPage() {
                   className="mt-2 w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm text-brand-slate shadow-inner focus:border-brand-navy focus:outline-none"
                 ></textarea>
               </label>
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-7 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-              >
+                <button
+                  type="submit"
+                  className="btn btn-primary px-7 py-3"
+                >
                 Отправить заявку
               </button>
               <p className="text-xs leading-6 text-brand-ash">
@@ -227,7 +224,7 @@ export default function ContactsPage() {
             </div>
             <Link
               href="/contacts?topic=partners"
-              className="mt-6 inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
+              className="mt-6 btn btn-outline px-6 py-2"
             >
               Стать партнёрской студией
             </Link>
@@ -265,7 +262,7 @@ export default function ContactsPage() {
           </div>
           <Link
             href="mailto:media@ogorodnov-method.ru"
-            className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
+              className="btn btn-primary px-8 py-3"
           >
             Запросить медиа-кит
           </Link>
@@ -293,7 +290,7 @@ export default function ContactsPage() {
               </a>
               <Link
                 href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+                className="btn btn-on-dark px-8 py-3"
               >
                 Попробовать лабораторию
               </Link>

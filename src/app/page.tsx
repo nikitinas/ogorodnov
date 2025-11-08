@@ -12,12 +12,10 @@ export default function Home() {
     <>
       <section className="section pb-0 pt-16">
         <div className="section-inner grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-3 rounded-full bg-brand-sand px-4 py-2 text-xs uppercase tracking-[0.32em] text-brand-ash">
-              <span>Методика Огороднова</span>
-              <span className="h-1 w-1 rounded-full bg-brand-coral" />
-              <span>Голос · Движение · Дыхание</span>
-            </div>
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-3 rounded-full bg-brand-sand px-4 py-2 text-xs uppercase tracking-[0.32em] text-brand-ash">
+                <span>Голос · Движение · Дыхание</span>
+              </div>
             <h1 className="text-4xl leading-tight text-brand-navy sm:text-5xl lg:text-[3.6rem] lg:leading-[1.05]">
               Ваш голос может всё. Настройте его, как камертон, и раскройте
               потенциал в музыке, профессии и жизни.
@@ -28,19 +26,13 @@ export default function Home() {
               и сообщество педагогов. Всё построено на трёх китах методики:
               алгоритмах, художественном тактировании и ладо-вокальных жестах.
             </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/contacts"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-lg"
-              >
-                Пройти бесплатную диагностику
-              </Link>
-              <Link
-                href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-brand-navy px-8 py-3 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-              >
-                Попробовать лабораторию
-              </Link>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Link href="/contacts" className="btn btn-primary px-8 py-3">
+                  Пройти бесплатную диагностику
+                </Link>
+                <Link href="/interactive-lab" className="btn btn-outline px-8 py-3">
+                  Попробовать лабораторию
+                </Link>
             </div>
           </div>
           <div className="flex flex-col gap-4 rounded-3xl bg-white p-8 shadow-soft">
@@ -79,10 +71,7 @@ export default function Home() {
                 каждую историю. Начните с подборки, близкой к вашим целям.
               </p>
             </div>
-            <Link
-              href="/interactive-lab"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-            >
+              <Link href="/interactive-lab" className="btn btn-outline px-6 py-2">
               С чего начать?
             </Link>
           </div>
@@ -141,10 +130,7 @@ export default function Home() {
               работают с человеческим голосом — через движение руки, дыхание и
               звук. Мы превращаем теорию в практику, доступную каждому.
             </div>
-            <Link
-              href="/method"
-              className="inline-flex items-center justify-center rounded-full border border-brand-navy px-6 py-2 text-sm font-semibold text-brand-navy transition-colors duration-200 hover:bg-brand-navy hover:text-white"
-            >
+              <Link href="/method" className="btn btn-outline px-6 py-2">
               Читать подробнее о системе
             </Link>
           </div>
@@ -266,19 +252,19 @@ export default function Home() {
                 корпоративная программа или wellness-маршрут.
               </p>
             </div>
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link
-                href="/contacts"
-                className="inline-flex items-center justify-center rounded-full bg-brand-coral px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
-              >
-                Пройти тест и получить план
-              </Link>
-              <Link
-                href="/interactive-lab"
-                className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
-              >
-                Узнать о лаборатории
-              </Link>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <Link
+                  href="/contacts"
+                  className="btn btn-primary px-8 py-3 shadow-lg"
+                >
+                  Пройти тест и получить план
+                </Link>
+                <Link
+                  href="/interactive-lab"
+                  className="btn btn-on-dark px-8 py-3"
+                >
+                  Узнать о лаборатории
+                </Link>
             </div>
           </div>
         </div>
