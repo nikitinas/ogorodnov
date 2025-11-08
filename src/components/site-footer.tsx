@@ -29,7 +29,10 @@ const footerNav = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-20 bg-brand-navy text-white">
+    <footer
+      className="mt-20 bg-brand-navy text-white"
+      style={{ backgroundColor: "#1f3c88" }}
+    >
       <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div>
