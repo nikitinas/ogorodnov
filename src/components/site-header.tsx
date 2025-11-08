@@ -50,15 +50,6 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <Link href="/interactive-lab" className="btn btn-outline px-5 py-2">
-            Попробовать бесплатно
-          </Link>
-          <Link href="/contacts" className="btn btn-primary px-4 py-1.5 text-sm">
-            Получить план
-          </Link>
-        </div>
-
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
@@ -132,23 +123,6 @@ export function SiteHeader() {
                 </div>
               </Link>
             ))}
-          </div>
-
-          <div className="mt-6 grid gap-3">
-            <Link
-              href="/interactive-lab"
-              onClick={() => setIsOpen(false)}
-              className="btn btn-outline px-5 py-3"
-            >
-              Попробовать бесплатно
-            </Link>
-            <Link
-              href="/contacts"
-              onClick={() => setIsOpen(false)}
-              className="btn btn-primary px-4 py-2 text-sm"
-            >
-              Получить план
-            </Link>
           </div>
         </div>
       ) : null}
