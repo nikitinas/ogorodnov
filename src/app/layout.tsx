@@ -25,7 +25,9 @@ export const metadata: Metadata = {
   },
   description:
     "Современная экосистема методики Огороднова: голос, движение и дыхание для детей, профессионалов, руководителей и терапевтов. Интерактивная лаборатория, курсы и комьюнити.",
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://example.com"
+  ),
 };
 
 export default function RootLayout({
