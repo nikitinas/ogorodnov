@@ -47,6 +47,28 @@ function mapDocsToNavItems(items: DocItem[]): DocsNavItem[] {
   });
 }
 
+function resolveDocLink(item: DocItem): string | null {
+  if (item.isDirectory) {
+    if (item.indexPage) {
+      return item.indexPage.slug;
+    }
+    if (item.children) {
+      for (const child of item.children) {
+        if (child.isIndexPage) {
+          continue;
+        }
+        const link = resolveDocLink(child);
+        if (link) {
+          return link;
+        }
+      }
+    }
+    return null;
+  }
+
+  return item.slug;
+}
+
 export async function generateStaticParams() {
   const allDocs = getAllDocs();
 
@@ -127,6 +149,7 @@ export default async function DocPage({ params }: DocPageProps) {
 
                 <div className="grid gap-6 md:grid-cols-2">
                   {allDocs.map((section) => {
+                    const sectionLink = resolveDocLink(section);
                     const childDocs =
                       section.children?.flatMap((item) => {
                         if (item.isDirectory) {
@@ -155,11 +178,8 @@ export default async function DocPage({ params }: DocPageProps) {
                         ];
                       }) ?? [];
 
-                    return (
-                      <div
-                        key={section.slug}
-                        className="rounded-lg border border-neutral-200 bg-white p-6 shadow-sm"
-                      >
+                    const cardContent = (
+                      <>
                         <h2 className="mb-4 font-serif text-2xl font-semibold text-brand-navy">
                           {section.russianTitle || section.title}
                         </h2>
@@ -187,6 +207,27 @@ export default async function DocPage({ params }: DocPageProps) {
                             )}
                           </ul>
                         )}
+                      </>
+                    );
+
+                    if (sectionLink) {
+                      return (
+                        <Link
+                          key={section.slug}
+                          href={`/docs/${sectionLink}`}
+                          className="group flex h-full flex-col rounded-lg border border-neutral-200 bg-white p-6 shadow-sm transition-colors hover:border-brand-navy hover:bg-brand-sand/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy/40"
+                        >
+                          {cardContent}
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <div
+                        key={section.slug}
+                        className="group flex h-full flex-col rounded-lg border border-neutral-200 bg-white p-6 shadow-sm transition-colors hover:border-brand-navy hover:bg-brand-sand/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy/40"
+                      >
+                        {cardContent}
                       </div>
                     );
                   })}
