@@ -55,27 +55,27 @@ function SidebarNavigation({ currentSlug }: { currentSlug?: string }) {
     );
   }
 
-  return (
-    <aside className="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
-      <nav className="space-y-4 pr-4">
-        <Link
-          href="/docs"
-          className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-            !currentSlug
-              ? "bg-brand-navy text-white"
-              : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
-          }`}
-        >
-          Главная
-        </Link>
-        <div className="space-y-3">
-          {allDocs.map((item) => (
-            <div key={item.slug}>{renderNavItem(item)}</div>
-          ))}
-        </div>
-      </nav>
-    </aside>
-  );
+    return (
+      <aside className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
+        <nav className="space-y-4 lg:pr-4">
+          <Link
+            href="/docs"
+            className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+              !currentSlug
+                ? "bg-brand-navy text-white"
+                : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
+            }`}
+          >
+            Главная
+          </Link>
+          <div className="space-y-3">
+            {allDocs.map((item) => (
+              <div key={item.slug}>{renderNavItem(item)}</div>
+            ))}
+          </div>
+        </nav>
+      </aside>
+    );
 }
 
 export async function generateStaticParams() {
