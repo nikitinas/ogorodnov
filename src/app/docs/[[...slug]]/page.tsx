@@ -19,13 +19,32 @@ type DocPageProps = {
 };
 
 function mapDocsToNavItems(items: DocItem[]): DocsNavItem[] {
-  return items.map((item) => ({
-    title: item.title,
-    slug: item.slug,
-    isDirectory: item.isDirectory,
-    russianTitle: item.russianTitle,
-    children: item.children ? mapDocsToNavItems(item.children) : undefined,
-  }));
+  return items.map((item) => {
+    if (item.isDirectory) {
+      const children = item.children
+        ? mapDocsToNavItems(item.children.filter((child) => !child.isIndexPage))
+        : undefined;
+
+      return {
+        title: item.title,
+        slug: item.slug,
+        isDirectory: true,
+        russianTitle: item.russianTitle,
+        href: item.indexPage?.slug,
+        hrefTitle: item.indexPage?.title ?? item.title,
+        hrefRussianTitle: item.indexPage?.russianTitle ?? item.russianTitle,
+        children,
+      };
+    }
+
+    return {
+      title: item.title,
+      slug: item.slug,
+      isDirectory: false,
+      russianTitle: item.russianTitle,
+      href: item.slug,
+    };
+  });
 }
 
 export async function generateStaticParams() {
@@ -34,17 +53,21 @@ export async function generateStaticParams() {
   function extractSlugs(items: DocItem[]): string[] {
     const slugs: string[] = [];
     for (const item of items) {
-      if (!item.isDirectory) {
+      if (item.isDirectory) {
+        if (item.indexPage) {
+          slugs.push(item.indexPage.slug);
+        }
+        if (item.children) {
+          slugs.push(...extractSlugs(item.children));
+        }
+      } else {
         slugs.push(item.slug);
-      }
-      if (item.children) {
-        slugs.push(...extractSlugs(item.children));
       }
     }
     return slugs;
   }
 
-  const slugs = extractSlugs(allDocs);
+  const slugs = Array.from(new Set(extractSlugs(allDocs)));
   return [
     { slug: [] },
     ...slugs.map((slug) => ({
@@ -102,46 +125,47 @@ export default async function DocPage({ params }: DocPageProps) {
                 </p>
               </div>
 
-              <div className="grid gap-6 md:grid-cols-2">
-                {allDocs.map((section) => (
-                  <div
-                    key={section.slug}
-                    className="rounded-lg border border-neutral-200 bg-white p-6 shadow-sm"
-                  >
-                    <h2 className="mb-4 font-serif text-2xl font-semibold text-brand-navy">
-                      {section.russianTitle || section.title}
-                    </h2>
-                    {section.children && (
-                      <ul className="space-y-2">
-                        {section.children
-                          .filter((item) => !item.isDirectory)
-                          .slice(0, 5)
-                          .map((item) => (
-                            <li key={item.slug}>
-                              <Link
-                                href={`/docs/${item.slug}`}
-                                className="text-brand-ash transition-colors hover:text-brand-navy"
-                              >
-                                {item.russianTitle || item.title}
-                              </Link>
-                            </li>
-                          ))}
-                        {section.children.filter((item) => !item.isDirectory).length > 5 && (
-                          <li>
-                            <Link
-                              href={`/docs/${section.slug}`}
-                              className="text-sm text-brand-indigo hover:underline"
-                            >
-                              и еще{" "}
-                              {section.children.filter((item) => !item.isDirectory).length - 5}...
-                            </Link>
-                          </li>
+                <div className="grid gap-6 md:grid-cols-2">
+                  {allDocs.map((section) => {
+                    const childDocs =
+                      section.children?.filter((item) => !item.isDirectory && !item.isIndexPage) ?? [];
+
+                    return (
+                      <div
+                        key={section.slug}
+                        className="rounded-lg border border-neutral-200 bg-white p-6 shadow-sm"
+                      >
+                        <h2 className="mb-4 font-serif text-2xl font-semibold text-brand-navy">
+                          {section.russianTitle || section.title}
+                        </h2>
+                        {childDocs.length > 0 && (
+                          <ul className="space-y-2">
+                            {childDocs.slice(0, 5).map((item) => (
+                              <li key={item.slug}>
+                                <Link
+                                  href={`/docs/${item.slug}`}
+                                  className="text-brand-ash transition-colors hover:text-brand-navy"
+                                >
+                                  {item.russianTitle || item.title}
+                                </Link>
+                              </li>
+                            ))}
+                            {childDocs.length > 5 && (
+                              <li>
+                                <Link
+                                  href={`/docs/${section.slug}`}
+                                  className="text-sm text-brand-indigo hover:underline"
+                                >
+                                  и еще {childDocs.length - 5}...
+                                </Link>
+                              </li>
+                            )}
+                          </ul>
                         )}
-                      </ul>
-                    )}
-                  </div>
-                ))}
-              </div>
+                      </div>
+                    );
+                  })}
+                </div>
 
               <div className="mt-8 rounded-lg border border-neutral-200 bg-brand-sand/30 p-6">
                 <h3 className="mb-3 font-serif text-xl font-semibold text-brand-navy">
@@ -183,12 +207,21 @@ export default async function DocPage({ params }: DocPageProps) {
   const findDocTitle = (slugToFind: string, fallback: string): string => {
     const search = (items: DocItem[]): string | null => {
       for (const item of items) {
-        if (item.slug === slugToFind) {
+        if (item.isDirectory) {
+          if (item.slug === slugToFind) {
+            return item.russianTitle || item.title;
+          }
+          if (item.indexPage) {
+            if (item.indexPage.slug === slugToFind || item.indexPage.sourceSlug === slugToFind) {
+              return item.indexPage.russianTitle || item.russianTitle || item.title;
+            }
+          }
+          if (item.children) {
+            const found = search(item.children);
+            if (found) return found;
+          }
+        } else if (item.slug === slugToFind) {
           return item.russianTitle || item.title;
-        }
-        if (item.children) {
-          const found = search(item.children);
-          if (found) return found;
         }
       }
       return null;
