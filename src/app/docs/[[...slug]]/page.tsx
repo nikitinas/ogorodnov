@@ -9,6 +9,8 @@ import {
   getSiblingDocs,
   type DocItem,
 } from "@/lib/docs";
+import DocsSidebar from "../_components/docs-sidebar";
+import type { DocsNavItem } from "../_components/types";
 
 type DocPageProps = {
   params: Promise<{
@@ -16,66 +18,55 @@ type DocPageProps = {
   }>;
 };
 
-function SidebarNavigation({ currentSlug }: { currentSlug?: string }) {
-  const allDocs = getAllDocs();
-
-  function renderNavItem(item: DocItem, level: number = 0) {
-    const isActive = currentSlug === item.slug;
-    const displayTitle = item.russianTitle || item.title;
-
+function mapDocsToNavItems(items: DocItem[]): DocsNavItem[] {
+  return items.map((item) => {
     if (item.isDirectory) {
-      return (
-        <div key={item.slug} className={level > 0 ? "ml-4 mt-2" : ""}>
-          <div className="mb-1 font-serif text-sm font-semibold text-brand-navy">
-            {displayTitle}
-          </div>
-          {item.children && (
-            <ul className="space-y-1 border-l-2 border-neutral-200 pl-3">
-              {item.children.map((child) => (
-                <li key={child.slug}>{renderNavItem(child, level + 1)}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      );
+      const children = item.children
+        ? mapDocsToNavItems(item.children.filter((child) => !child.isIndexPage))
+        : undefined;
+
+      return {
+        title: item.title,
+        slug: item.slug,
+        isDirectory: true,
+        russianTitle: item.russianTitle,
+        href: item.indexPage?.slug,
+        hrefTitle: item.indexPage?.title ?? item.title,
+        hrefRussianTitle: item.indexPage?.russianTitle ?? item.russianTitle,
+        children,
+      };
     }
 
-    return (
-      <Link
-        key={item.slug}
-        href={`/docs/${item.slug}`}
-        className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
-          isActive
-            ? "bg-brand-navy text-white font-medium"
-            : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
-        }`}
-      >
-        {displayTitle}
-      </Link>
-    );
+    return {
+      title: item.title,
+      slug: item.slug,
+      isDirectory: false,
+      russianTitle: item.russianTitle,
+      href: item.slug,
+    };
+  });
+}
+
+function resolveDocLink(item: DocItem): string | null {
+  if (item.isDirectory) {
+    if (item.indexPage) {
+      return item.indexPage.slug;
+    }
+    if (item.children) {
+      for (const child of item.children) {
+        if (child.isIndexPage) {
+          continue;
+        }
+        const link = resolveDocLink(child);
+        if (link) {
+          return link;
+        }
+      }
+    }
+    return null;
   }
 
-  return (
-    <aside className="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
-      <nav className="space-y-4 pr-4">
-        <Link
-          href="/docs"
-          className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-            !currentSlug
-              ? "bg-brand-navy text-white"
-              : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
-          }`}
-        >
-          Главная
-        </Link>
-        <div className="space-y-3">
-          {allDocs.map((item) => (
-            <div key={item.slug}>{renderNavItem(item)}</div>
-          ))}
-        </div>
-      </nav>
-    </aside>
-  );
+  return item.slug;
 }
 
 export async function generateStaticParams() {
@@ -84,17 +75,21 @@ export async function generateStaticParams() {
   function extractSlugs(items: DocItem[]): string[] {
     const slugs: string[] = [];
     for (const item of items) {
-      if (!item.isDirectory) {
+      if (item.isDirectory) {
+        if (item.indexPage) {
+          slugs.push(item.indexPage.slug);
+        }
+        if (item.children) {
+          slugs.push(...extractSlugs(item.children));
+        }
+      } else if (!item.isIndexPage) {
         slugs.push(item.slug);
-      }
-      if (item.children) {
-        slugs.push(...extractSlugs(item.children));
       }
     }
     return slugs;
   }
 
-  const slugs = extractSlugs(allDocs);
+  const slugs = Array.from(new Set(extractSlugs(allDocs)));
   return [
     { slug: [] },
     ...slugs.map((slug) => ({
@@ -131,15 +126,16 @@ export async function generateMetadata({ params }: DocPageProps) {
 export default async function DocPage({ params }: DocPageProps) {
   const { slug } = await params;
 
+  const allDocs = getAllDocs();
+  const navItems = mapDocsToNavItems(allDocs);
+
   // Handle index page (no slug)
   if (!slug || slug.length === 0) {
-    const allDocs = getAllDocs();
-
     return (
       <div className="section py-12">
         <div className="section-inner">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]">
-            <SidebarNavigation />
+            <DocsSidebar items={navItems} />
             <div className="min-w-0">
               <div className="mb-8 space-y-4">
                 <h1 className="font-serif text-4xl font-bold text-brand-navy md:text-5xl">
@@ -151,46 +147,91 @@ export default async function DocPage({ params }: DocPageProps) {
                 </p>
               </div>
 
-              <div className="grid gap-6 md:grid-cols-2">
-                {allDocs.map((section) => (
-                  <div
-                    key={section.slug}
-                    className="rounded-lg border border-neutral-200 bg-white p-6 shadow-sm"
-                  >
-                    <h2 className="mb-4 font-serif text-2xl font-semibold text-brand-navy">
-                      {section.russianTitle || section.title}
-                    </h2>
-                    {section.children && (
-                      <ul className="space-y-2">
-                        {section.children
-                          .filter((item) => !item.isDirectory)
-                          .slice(0, 5)
-                          .map((item) => (
-                            <li key={item.slug}>
-                              <Link
-                                href={`/docs/${item.slug}`}
-                                className="text-brand-ash transition-colors hover:text-brand-navy"
-                              >
-                                {item.russianTitle || item.title}
-                              </Link>
-                            </li>
-                          ))}
-                        {section.children.filter((item) => !item.isDirectory).length > 5 && (
-                          <li>
-                            <Link
-                              href={`/docs/${section.slug}`}
-                              className="text-sm text-brand-indigo hover:underline"
-                            >
-                              и еще{" "}
-                              {section.children.filter((item) => !item.isDirectory).length - 5}...
-                            </Link>
-                          </li>
+                <div className="grid gap-6 md:grid-cols-2">
+                  {allDocs.map((section) => {
+                    const sectionLink = resolveDocLink(section);
+                    const childDocs =
+                      section.children?.flatMap((item) => {
+                        if (item.isDirectory) {
+                          if (!item.indexPage) {
+                            return [];
+                          }
+                          return [
+                            {
+                              slug: item.indexPage.slug,
+                              title: item.indexPage.title,
+                              russianTitle: item.indexPage.russianTitle ?? item.russianTitle ?? item.title,
+                            },
+                          ];
+                        }
+
+                        if (item.isIndexPage) {
+                          return [];
+                        }
+
+                        return [
+                          {
+                            slug: item.slug,
+                            title: item.title,
+                            russianTitle: item.russianTitle,
+                          },
+                        ];
+                      }) ?? [];
+
+                    const cardContent = (
+                      <>
+                        <h2 className="mb-4 font-serif text-2xl font-semibold text-brand-navy">
+                          {section.russianTitle || section.title}
+                        </h2>
+                        {childDocs.length > 0 && (
+                          <ul className="space-y-2">
+                            {childDocs.slice(0, 5).map((item) => (
+                              <li key={item.slug}>
+                                <Link
+                                  href={`/docs/${item.slug}`}
+                                  className="text-brand-ash transition-colors hover:text-brand-navy"
+                                >
+                                  {item.russianTitle || item.title}
+                                </Link>
+                              </li>
+                            ))}
+                            {childDocs.length > 5 && (
+                              <li>
+                                <Link
+                                  href={`/docs/${section.slug}`}
+                                  className="text-sm text-brand-indigo hover:underline"
+                                >
+                                  и еще {childDocs.length - 5}...
+                                </Link>
+                              </li>
+                            )}
+                          </ul>
                         )}
-                      </ul>
-                    )}
-                  </div>
-                ))}
-              </div>
+                      </>
+                    );
+
+                    if (sectionLink) {
+                      return (
+                        <Link
+                          key={section.slug}
+                          href={`/docs/${sectionLink}`}
+                          className="group flex h-full flex-col rounded-lg border border-neutral-200 bg-white p-6 shadow-sm transition-colors hover:border-brand-navy hover:bg-brand-sand/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy/40"
+                        >
+                          {cardContent}
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <div
+                        key={section.slug}
+                        className="group flex h-full flex-col rounded-lg border border-neutral-200 bg-white p-6 shadow-sm transition-colors hover:border-brand-navy hover:bg-brand-sand/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy/40"
+                      >
+                        {cardContent}
+                      </div>
+                    );
+                  })}
+                </div>
 
               <div className="mt-8 rounded-lg border border-neutral-200 bg-brand-sand/30 p-6">
                 <h3 className="mb-3 font-serif text-xl font-semibold text-brand-navy">
@@ -229,11 +270,37 @@ export default async function DocPage({ params }: DocPageProps) {
     };
   });
 
+  const findDocTitle = (slugToFind: string, fallback: string): string => {
+    const search = (items: DocItem[]): string | null => {
+      for (const item of items) {
+        if (item.isDirectory) {
+          if (item.slug === slugToFind) {
+            return item.russianTitle || item.title;
+          }
+          if (item.indexPage) {
+            if (item.indexPage.slug === slugToFind || item.indexPage.sourceSlug === slugToFind) {
+              return item.indexPage.russianTitle || item.russianTitle || item.title;
+            }
+          }
+          if (item.children) {
+            const found = search(item.children);
+            if (found) return found;
+          }
+        } else if (item.slug === slugToFind) {
+          return item.russianTitle || item.title;
+        }
+      }
+      return null;
+    };
+
+    return search(allDocs) ?? fallback;
+  };
+
   return (
     <div className="section py-12">
       <div className="section-inner">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]">
-          <SidebarNavigation currentSlug={docSlug} />
+          <DocsSidebar items={navItems} currentSlug={docSlug} />
 
           <div className="min-w-0">
             {/* Breadcrumb */}
@@ -245,23 +312,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 Главная
               </Link>
               {breadcrumbs.map((crumb, index) => {
-                const allDocs = getAllDocs();
-                function findDocTitle(slug: string): string {
-                  function search(items: DocItem[]): string | null {
-                    for (const item of items) {
-                      if (item.slug === slug) {
-                        return item.russianTitle || item.title;
-                      }
-                      if (item.children) {
-                        const found = search(item.children);
-                        if (found) return found;
-                      }
-                    }
-                    return null;
-                  }
-                  return search(allDocs) || crumb.label;
-                }
-                const label = findDocTitle(crumb.path);
+                const label = findDocTitle(crumb.path, crumb.label);
 
                 return (
                   <span key={index} className="flex items-center gap-2">
