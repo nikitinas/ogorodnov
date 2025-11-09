@@ -28,70 +28,70 @@ export default function DocsSidebar({ items, currentSlug }: DocsSidebarProps) {
     }
   };
 
-    const renderNavItem = (item: DocsNavItem, level: number = 0): ReactNode => {
-      const displayTitle = item.russianTitle || item.title;
+  const renderNavItem = (item: DocsNavItem, level: number = 0): ReactNode => {
+    const displayTitle = item.russianTitle || item.title;
 
-      if (item.isDirectory) {
-        const linkSlug = item.href;
-        const linkTitle = item.hrefRussianTitle || displayTitle;
-        const isSectionActive =
-          (linkSlug && currentSlug === linkSlug) ||
-          (!!currentSlug && item.slug && currentSlug.startsWith(`${item.slug}/`));
+    if (item.isDirectory) {
+      const linkSlug = item.href;
+      const linkTitle = item.hrefRussianTitle || displayTitle;
+      const isSectionActive =
+        (linkSlug && currentSlug === linkSlug) ||
+        (!!currentSlug && item.slug && currentSlug.startsWith(`${item.slug}/`));
 
-        const headingClasses = linkSlug
-          ? `block rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
-              isSectionActive
-                ? "bg-brand-navy text-white"
-                : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
-            }`
-          : "mb-1 font-serif text-sm font-semibold text-brand-navy";
+      const headingClasses = linkSlug
+        ? `block rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
+            isSectionActive
+              ? "bg-brand-navy text-white"
+              : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
+          }`
+        : "mb-1 font-serif text-sm font-semibold text-brand-navy";
 
-        const headingContent = linkSlug ? (
-          <Link
-            href={`/docs/${linkSlug}`}
-            onClick={handleNavigate}
-            aria-current={isSectionActive ? "page" : undefined}
-            className={headingClasses}
-          >
-            {linkTitle}
-          </Link>
-        ) : (
-          <div className={headingClasses}>{displayTitle}</div>
-        );
-
-        return (
-          <div key={item.slug} className={level > 0 ? "ml-4 mt-2" : ""}>
-            {headingContent}
-            {item.children && (
-              <ul className="space-y-1 border-l-2 border-neutral-200 pl-3">
-                {item.children.map((child) => (
-                  <li key={child.slug}>{renderNavItem(child, level + 1)}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      }
-
-      const hrefSlug = item.href ?? item.slug;
-      const isActive = currentSlug === hrefSlug;
+      const headingContent = linkSlug ? (
+        <Link
+          href={`/docs/${linkSlug}`}
+          onClick={handleNavigate}
+          aria-current={isSectionActive ? "page" : undefined}
+          className={headingClasses}
+        >
+          {linkTitle}
+        </Link>
+      ) : (
+        <div className={headingClasses}>{displayTitle}</div>
+      );
 
       return (
-        <Link
-          key={item.slug}
-          href={`/docs/${hrefSlug}`}
-          onClick={handleNavigate}
-          className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
-            isActive
-              ? "bg-brand-navy text-white font-medium"
-              : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
-          }`}
-          aria-current={isActive ? "page" : undefined}
-        >
-          {displayTitle}
-        </Link>
+        <div key={item.slug} className={level > 0 ? "ml-4 mt-2" : ""}>
+          {headingContent}
+          {item.children && (
+            <ul className="space-y-1 border-l-2 border-neutral-200 pl-3">
+              {item.children.map((child) => (
+                <li key={child.slug}>{renderNavItem(child, level + 1)}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       );
-    };
+    }
+
+    const hrefSlug = item.href ?? item.slug;
+    const isActive = currentSlug === hrefSlug;
+
+    return (
+      <Link
+        key={item.slug}
+        href={`/docs/${hrefSlug}`}
+        onClick={handleNavigate}
+        className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+          isActive
+            ? "bg-brand-navy text-white font-medium"
+            : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
+        }`}
+        aria-current={isActive ? "page" : undefined}
+      >
+        {displayTitle}
+      </Link>
+    );
+  };
 
   return (
     <div>

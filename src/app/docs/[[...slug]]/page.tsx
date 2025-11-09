@@ -60,7 +60,7 @@ export async function generateStaticParams() {
         if (item.children) {
           slugs.push(...extractSlugs(item.children));
         }
-      } else {
+      } else if (!item.isIndexPage) {
         slugs.push(item.slug);
       }
     }
@@ -128,7 +128,32 @@ export default async function DocPage({ params }: DocPageProps) {
                 <div className="grid gap-6 md:grid-cols-2">
                   {allDocs.map((section) => {
                     const childDocs =
-                      section.children?.filter((item) => !item.isDirectory && !item.isIndexPage) ?? [];
+                      section.children?.flatMap((item) => {
+                        if (item.isDirectory) {
+                          if (!item.indexPage) {
+                            return [];
+                          }
+                          return [
+                            {
+                              slug: item.indexPage.slug,
+                              title: item.indexPage.title,
+                              russianTitle: item.indexPage.russianTitle ?? item.russianTitle ?? item.title,
+                            },
+                          ];
+                        }
+
+                        if (item.isIndexPage) {
+                          return [];
+                        }
+
+                        return [
+                          {
+                            slug: item.slug,
+                            title: item.title,
+                            russianTitle: item.russianTitle,
+                          },
+                        ];
+                      }) ?? [];
 
                     return (
                       <div
