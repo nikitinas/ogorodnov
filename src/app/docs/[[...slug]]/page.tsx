@@ -9,6 +9,8 @@ import {
   getSiblingDocs,
   type DocItem,
 } from "@/lib/docs";
+import DocsSidebar from "../_components/docs-sidebar";
+import type { DocsNavItem } from "../_components/types";
 
 type DocPageProps = {
   params: Promise<{
@@ -16,66 +18,14 @@ type DocPageProps = {
   }>;
 };
 
-function SidebarNavigation({ currentSlug }: { currentSlug?: string }) {
-  const allDocs = getAllDocs();
-
-  function renderNavItem(item: DocItem, level: number = 0) {
-    const isActive = currentSlug === item.slug;
-    const displayTitle = item.russianTitle || item.title;
-
-    if (item.isDirectory) {
-      return (
-        <div key={item.slug} className={level > 0 ? "ml-4 mt-2" : ""}>
-          <div className="mb-1 font-serif text-sm font-semibold text-brand-navy">
-            {displayTitle}
-          </div>
-          {item.children && (
-            <ul className="space-y-1 border-l-2 border-neutral-200 pl-3">
-              {item.children.map((child) => (
-                <li key={child.slug}>{renderNavItem(child, level + 1)}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      );
-    }
-
-    return (
-      <Link
-        key={item.slug}
-        href={`/docs/${item.slug}`}
-        className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
-          isActive
-            ? "bg-brand-navy text-white font-medium"
-            : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
-        }`}
-      >
-        {displayTitle}
-      </Link>
-    );
-  }
-
-    return (
-      <aside className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
-        <nav className="space-y-4 lg:pr-4">
-          <Link
-            href="/docs"
-            className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              !currentSlug
-                ? "bg-brand-navy text-white"
-                : "text-brand-ash hover:bg-neutral-100 hover:text-brand-navy"
-            }`}
-          >
-            Главная
-          </Link>
-          <div className="space-y-3">
-            {allDocs.map((item) => (
-              <div key={item.slug}>{renderNavItem(item)}</div>
-            ))}
-          </div>
-        </nav>
-      </aside>
-    );
+function mapDocsToNavItems(items: DocItem[]): DocsNavItem[] {
+  return items.map((item) => ({
+    title: item.title,
+    slug: item.slug,
+    isDirectory: item.isDirectory,
+    russianTitle: item.russianTitle,
+    children: item.children ? mapDocsToNavItems(item.children) : undefined,
+  }));
 }
 
 export async function generateStaticParams() {
@@ -131,15 +81,16 @@ export async function generateMetadata({ params }: DocPageProps) {
 export default async function DocPage({ params }: DocPageProps) {
   const { slug } = await params;
 
+  const allDocs = getAllDocs();
+  const navItems = mapDocsToNavItems(allDocs);
+
   // Handle index page (no slug)
   if (!slug || slug.length === 0) {
-    const allDocs = getAllDocs();
-
     return (
       <div className="section py-12">
         <div className="section-inner">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]">
-            <SidebarNavigation />
+            <DocsSidebar items={navItems} />
             <div className="min-w-0">
               <div className="mb-8 space-y-4">
                 <h1 className="font-serif text-4xl font-bold text-brand-navy md:text-5xl">
@@ -229,11 +180,28 @@ export default async function DocPage({ params }: DocPageProps) {
     };
   });
 
+  const findDocTitle = (slugToFind: string, fallback: string): string => {
+    const search = (items: DocItem[]): string | null => {
+      for (const item of items) {
+        if (item.slug === slugToFind) {
+          return item.russianTitle || item.title;
+        }
+        if (item.children) {
+          const found = search(item.children);
+          if (found) return found;
+        }
+      }
+      return null;
+    };
+
+    return search(allDocs) ?? fallback;
+  };
+
   return (
     <div className="section py-12">
       <div className="section-inner">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]">
-          <SidebarNavigation currentSlug={docSlug} />
+          <DocsSidebar items={navItems} currentSlug={docSlug} />
 
           <div className="min-w-0">
             {/* Breadcrumb */}
@@ -245,23 +213,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 Главная
               </Link>
               {breadcrumbs.map((crumb, index) => {
-                const allDocs = getAllDocs();
-                function findDocTitle(slug: string): string {
-                  function search(items: DocItem[]): string | null {
-                    for (const item of items) {
-                      if (item.slug === slug) {
-                        return item.russianTitle || item.title;
-                      }
-                      if (item.children) {
-                        const found = search(item.children);
-                        if (found) return found;
-                      }
-                    }
-                    return null;
-                  }
-                  return search(allDocs) || crumb.label;
-                }
-                const label = findDocTitle(crumb.path);
+                const label = findDocTitle(crumb.path, crumb.label);
 
                 return (
                   <span key={index} className="flex items-center gap-2">
